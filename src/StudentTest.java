@@ -1,4 +1,4 @@
-mport static org.junit.Assert.*;
+import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -31,14 +31,26 @@ public class StudentTest {
 		Student secondStudent = new Student("x", "Y", 3);
 		
 		int actual = secondStudent.compareTo(firstStudent);
-		int expected = 1;
-		
-		assertEquals(expected, actual);
+		//should be bigger than zero
+		boolean result = false;
+		if(actual > 0)
+			result = true;
+		assertTrue(result);
 		
 		Student student = new Student("x", "Y", 5);
 		
-		expected = -1;
+		//should be less than 0
+		result = false;
 		actual = secondStudent.compareTo(student);
+		if(actual < 0)
+			result = true;
+		assertTrue(result);
+		
+		Student student2 = new Student("X", "Y", 5);
+		
+		//should be equal to 0
+		actual = student.compareTo(student2);
+		int expected = 0;
 		assertEquals(expected, actual);
 
 
